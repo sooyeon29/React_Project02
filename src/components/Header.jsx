@@ -4,7 +4,8 @@ import styled from "styled-components";
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 30px;
+  margin: 15px 70px;
+  font-weight: 800;
   span {
     font-size: 20px;
   }

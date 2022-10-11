@@ -1,17 +1,23 @@
 //액션 명
 const ADD_INPUT = "ADD_INPUT";
 const DELETE_LISTBOX = "DELETE_LISTBOX";
+const CHANGE_LISTBOX = "CHANGE_LISTBOX";
+// const TO_INFOPAGE = "TO_INFOPAGE";
 
 //액션크리에이터
+// 인풋박스에 입력하는 값을 addedword로 받는다
+// ** 인풋저장 액션만들기
 export const addInput = (addedword) => {
-  console.log(addedword);
-
+  // console.log(addedword);
   return {
     type: ADD_INPUT,
     addedword,
   };
 };
 
+//선택한 박스의 Id를 받아준다! (바꾸고 싶은 부분) ->> 액션 크리에이터!
+// 새로받아 오는 값 deleteID
+// ** 삭제버튼 액션만들기
 export const delBox = (deleteID) => {
   //   console.log(deleteID);
   return {
@@ -20,12 +26,20 @@ export const delBox = (deleteID) => {
   };
 };
 
+// ** 카드 옮기기 액션만들기 (취소, 완료)
+export const moveBox = (changeIsDone) => {
+  return {
+    type: CHANGE_LISTBOX,
+    changeIsDone,
+  };
+};
+
 //초기값
 const initialState = {
   todos: [
     {
       id: 1,
-      title: "월요일할일",
+      title: "월요일 할일",
       body: "개인과제완성하기",
       isDone: false,
     },
@@ -40,9 +54,8 @@ const initialState = {
 
 //리듀서
 const wordAdder = (state = initialState, action) => {
-  console.log(action);
+  // console.log(action);
   //   console.log(state.todos);
-
   switch (action.type) {
     case ADD_INPUT:
       return {
@@ -57,6 +70,7 @@ const wordAdder = (state = initialState, action) => {
             id: state.todos[state.todos.length - 1].id + 1,
             title: action.addedword.title,
             body: action.addedword.body,
+            isDone: false,
           },
         ],
       };
@@ -71,6 +85,20 @@ const wordAdder = (state = initialState, action) => {
           return filtertodo.id !== action.deleteID;
         }),
       };
+    case CHANGE_LISTBOX:
+      return {
+        todos: state.todos.map((maptodo) => {
+          if (maptodo.id === action.changeIsDone) {
+            return {
+              ...maptodo,
+              isDone: !maptodo.isDone,
+            };
+          } else {
+            return { ...maptodo };
+          }
+        }),
+      };
+
     default:
       return state;
   }
@@ -78,15 +106,3 @@ const wordAdder = (state = initialState, action) => {
 
 //export default 리듀서
 export default wordAdder;
-
-// const deleter = (state = initialState, action) => {
-//   switch (action.type) {
-//     case DELETE_LISTBOX:
-//         state.todos.filter((matchId)=> {
-//             if (state.todos.id !=== )
-//         })
-//        return {};
-//     default:
-//       return state;
-//   }
-// };
