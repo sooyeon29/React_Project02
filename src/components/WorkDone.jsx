@@ -43,7 +43,7 @@ const RenderTodos = ({ todoList, title }) => {
               fontColor="#4f68f8"
               onClick={() => moveBut(todo.id)}
             >
-              {todo.idDone ? "취소" : "완료"}
+              {todo.isDone ? "취소" : "완료"}
             </Button>
           </ListBox>
         );
