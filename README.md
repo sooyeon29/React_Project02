@@ -1,6 +1,8 @@
 ## TodoList 만들기 (React-redux&router-dom)
 one redux store / css-in-js / Link
 
+![image](https://user-images.githubusercontent.com/111853363/195376916-806a3357-18d1-46b7-b418-06a3e10feef9.png)
+
 ### compnents
 1 Header.jsx -> 머릿글
 
