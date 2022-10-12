@@ -55,7 +55,7 @@ const initialState = {
 //리듀서
 const wordAdder = (state = initialState, action) => {
   // console.log(action);
-  //   console.log(state.todos);
+  console.log(state.todos);
   switch (action.type) {
     case ADD_INPUT:
       return {
@@ -67,7 +67,10 @@ const wordAdder = (state = initialState, action) => {
             // 중간에 숫자가 삭제되더라도 길이가 줄어드는것은 맞지만 길이가 문제가 nono!!!
             // 길이-1을 인덱스로 준것임으로 배열의 가장 마지막에 있는 원소를 뜻한다!!
             // 그러므로 그 id에 1을 더하면 다음 숫자가 된다!!!
-            id: state.todos[state.todos.length - 1].id + 1,
+            id:
+              state.todos.length === 0
+                ? (state.todos.id = 1)
+                : state.todos[state.todos.length - 1].id + 1,
             title: action.addedword.title,
             body: action.addedword.body,
             isDone: false,

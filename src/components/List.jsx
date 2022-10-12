@@ -50,7 +50,7 @@ export default function List() {
   const globalAddedWord = useSelector((state) => state.wordAdder.todos);
   const completedList = globalAddedWord.filter((item) => !item.isDone);
   const inCompletedList = globalAddedWord.filter((item) => item.isDone);
-
+  console.log(globalAddedWord);
   // console.log(completedList);
   // console.log(inCompletedList);
 

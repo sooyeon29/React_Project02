@@ -24,7 +24,10 @@ const RenderTodos = ({ todoList, title }) => {
             borderColor={todo.isDone ? "#80b1fa" : "#ef966e"}
             key={todo.id}
           >
-            <Link to={`/info/${todo.id}`}>상세보기</Link>
+            {/* 템플릿 리터럴 을 사용하여  링크를 벡틱을 사용하여 표현식을 삽입할 수 있다*/}
+            <div>
+              <Link to={`/info/${todo.id}`}>상세보기</Link>
+            </div>
             <h2>{todo.title}</h2>
             <h3>{todo.body}</h3>
 
@@ -57,8 +60,10 @@ const ListBox = styled.div`
   margin: 30px 100px;
   padding: 10px;
   word-break: break-all;
-  Link {
+
+  div {
     font-size: 10px;
+    float: right;
   }
 `;
 
