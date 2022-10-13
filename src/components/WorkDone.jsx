@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { delBox, moveBox } from "../redux/modules/listsaver";
+import Proptypes from "prop-types";
 
 const RenderTodos = ({ todoList, title }) => {
   // console.log(todoList);
@@ -52,6 +53,12 @@ const RenderTodos = ({ todoList, title }) => {
   );
 };
 
+RenderTodos.propTypes = {
+  todoList: Proptypes.object,
+  // object가 아닌 array라는 경고문을 콘솔창에서 확인할 수 있다!!
+  title: Proptypes.string,
+};
+
 export default RenderTodos;
 
 const ListBox = styled.div`
@@ -60,7 +67,6 @@ const ListBox = styled.div`
   margin: 30px 100px;
   padding: 10px;
   word-break: break-all;
-
   div {
     font-size: 10px;
     float: right;
